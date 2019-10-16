@@ -23,9 +23,6 @@ before_install:
   - ln -sf $HOME/.cache/node_modules .
   - nvm install v8
   - npm install -g npm
-  - npm install -g npm-install-retry
-  - npm --version
-  - npm prune
 
   - git clone https://github.com/girder/girder.git $GIRDER_PATH && git -C $GIRDER_PATH checkout $GIRDER_VERSION
   - CACHE=$HOME/.cache CMAKE_VERSION=3.4.3 CMAKE_SHORT_VERSION=3.4 source $GIRDER_PATH/scripts/install_cmake.sh
@@ -36,6 +33,10 @@ before_install:
   - mkdir /tmp/db
   - mongod --dbpath=/tmp/db >/dev/null 2>/dev/null &
   - mongod --version
+
+  - npm install -g npm
+  - npm install -g npm-install-retry
+  - npm --version
 
 install:
   - pushd $GIRDER_PATH
